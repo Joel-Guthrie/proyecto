@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLife - Mejora tu Estado Físico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: url('https://s10.s3c.es/imag/_v0/2117x1156/3/c/5/Ejercicio-estiramiento-aumentar-masa-muscular.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        
+        header {
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #0099ff 3px solid;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        header:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+        
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        
+        header li {
+            float: left;
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        
+        header #branding {
+            float: left;
+        }
+        
+        header #branding h1 {
+            margin: 0;
+        }
+        
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+        
+        header .highlight, header .current a {
+            color: #0099ff;
+            font-weight: bold;
+        }
+        
+        header a:hover {
+            color: #ffffff;
+            font-weight: bold;
+            transform: scale(1.1);
+            transition: all 0.3s ease;
+        }
+        
+        #showcase {
+            min-height: 400px;
+            background: url('https://source.unsplash.com/random/1280x720/?workout') no-repeat 0 -400px;
+            text-align: center;
+            color: #ffffff;
+            padding-top: 150px;
+        }
+        
+        #showcase h1 {
+            margin-top: 100px;
+            font-size: 55px;
+            margin-bottom: 10px;
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        #showcase p {
+            font-size: 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        #importance {
+            background: url('https://source.unsplash.com/random/1920x1080/?healthy') no-repeat center center;
+            background-size: cover;
+            padding: 60px 20px;
+            color: #fff;
+            text-align: center;
+        }
+
+        #importance h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        #importance p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: auto;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        #boxes {
+            margin-top: 20px;
+        }
+        
+        #boxes .box {
+            float: left;
+            text-align: center;
+            width: 30%;
+            padding: 10px;
+            background: #fff;
+            margin: 1.66%;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        #boxes .box:hover {
+            transform: translateY(-10px);
+        }
+        
+        #boxes .box img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        #boxes .box:hover img {
+            transform: scale(1.1);
+        }
+        
+        footer {
+            padding: 20px;
+            margin-top: 20px;
+            color: #ffffff;
+            background-color: #0099ff;
+            text-align: center;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        section {
+            padding: 50px 0;
+            background: rgba(255, 255, 255, 0.8);
+            margin-top: 20px;
+            transition: background 0.3s ease;
+        }
+
+        section:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        #about, #services, #nutrition, #training, #wellness {
+            display: none;
+        }
+
+        #about:target, #services:target, #nutrition:target, #training:target, #wellness:target {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #0099ff;
+            color: #fff;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #0077cc;
+            transform: scale(1.05);
+        }
+        
+        .contact-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .contact-icon:hover {
+            transform: scale(1.2);
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-30px);}
+            60% {transform: translateY(-15px);}
+        }
+        
+        .bounce {
+            animation: bounce 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">Fit</span>Life</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="current"><a href="#showcase">Inicio</a></li>
+                    <li><a href="#about">Sobre Nosotros</a></li>
+                    <li><a href="#services">Servicios</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="showcase">
+        <div class="container">
+            <h1>Mejora tu Estado Físico</h1>
+            <p>Descubre cómo llevar una vida más saludable y en forma con nuestros consejos expertos</p>
+        </div>
+    </section>
+
+    <section id="importance">
+        <div class="container">
+            <h2>La Importancia de un Cuerpo Sano</h2>
+            <p>Cuidar de tu cuerpo es esencial para mantener una vida equilibrada y activa. Un cuerpo sano no solo mejora tu bienestar físico, sino que también fortalece tu salud mental, ayudándote a enfrentar los desafíos diarios con más energía y positividad.</p>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>Sobre Nosotros</h2>
+            <p>En FitLife, nos dedicamos a ayudarte a alcanzar tus metas de salud y fitness. Nuestro equipo de expertos en nutrición, entrenamiento y bienestar está comprometido a proporcionarte las herramientas y el conocimiento necesarios para transformar tu vida. Nos enfocamos en crear hábitos sostenibles que mejoren tu calidad de vida, brindándote un apoyo continuo a lo largo de tu proceso.</p>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2>Nuestros Servicios</h2>
+            <div id="boxes">
+                <div class="box fade-in">
+                    <img src="https://i0.wp.com/sinmiga.com/wp-content/uploads/2023/01/MPT01-e1673275162625.jpg?fit=900%2C601&ssl=1" alt="Nutrición">
+                    <h3>Nutrición</h3>
+                    <p>Aprende sobre dietas balanceadas y hábitos alimenticios saludables para optimizar tu salud.</p>
+                    <a href="#nutrition" class="btn">Más información</a>
+                </div>
+                <div class="box fade-in">
+                    <img src="https://www.webconsultas.com/sites/default/files/styles/wc_adaptive_image__small__webp/public/articulos/rope_training_ejercicios_jpg.webp" alt="Entrenamiento">
+                    <h3>Entrenamiento</h3>
+                    <p>Descubre rutinas de ejercicio efectivas para mejorar tu condición física y fuerza.</p>
+                    <a href="#training" class="btn">Más información</a>
+                </div>
+                <div class="box fade-in">
+                    <img src="https://img.freepik.com/vector-gratis/persona-que-practica-yoga-bienestar-mental-corporal_74855-20679.jpg?semt=ais_hybrid" alt="Bienestar">
+                    <h3>Bienestar</h3>
+                    <p>Consejos para mantener un equilibrio entre cuerpo y mente, incluyendo técnicas de relajación.</p>
+                    <a href="#wellness" class="btn">Más información</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="nutrition">
+        <div class="container">
+            <h2>Nutrición</h2>
+            <p>Nuestro programa de nutrición te ofrece planes de alimentación personalizados, consejos para una dieta equilibrada y educación sobre cómo los alimentos afectan tu salud y rendimiento. Exploramos diferentes enfoques nutricionales para ayudarte a encontrar lo que mejor se adapte a tus necesidades y objetivos. Nuestro equipo de nutricionistas se asegurará de que recibas el apoyo necesario para mantener hábitos alimenticios saludables a largo plazo.</p>
+            <a href="#services" class="btn">Volver a Servicios</a>
+        </div>
+    </section>
+
+    <section id="training">
+        <div class="container">
+            <h2>Entrenamiento</h2>
+            <p>Desde principiantes hasta atletas avanzados, nuestros programas de entrenamiento se adaptan a tus necesidades. Incluyen rutinas personalizadas de fuerza, cardio y flexibilidad que te ayudarán a mejorar tu condición física, aumentar tu fuerza y resistencia, y reducir el riesgo de lesiones. Nos enfocamos en un entrenamiento funcional que mejora tu rendimiento en las actividades diarias y deportivas.</p>
+            <p>Además, te proporcionamos acceso a entrenadores certificados que te guiarán paso a paso en tu proceso, asegurándose de que realices cada ejercicio con la técnica adecuada para maximizar los resultados.</p>
+            <a href="#services" class="btn">Volver a Servicios</a>
+        </div>
+    </section>
+
+    <section id="wellness">
+        <div class="container">
+            <h2>Bienestar</h2>
+            <p>Nuestro enfoque holístico del bienestar combina técnicas de manejo del estrés, meditación, yoga y mindfulness. Creemos que el bienestar mental es tan importante como el físico, y por eso trabajamos para que encuentres el equilibrio entre cuerpo y mente. Ofrecemos talleres y sesiones de meditación guiada, clases de yoga, y programas de relajación que te ayudarán a reducir el estrés y mejorar tu calidad de vida.</p>
+            <p>Ya sea que busques aprender a manejar el estrés cotidiano, mejorar tu concentración o simplemente relajarte, nuestro equipo de bienestar está aquí para brindarte el apoyo necesario para lograrlo.</p>
+            <a href="#services" class="btn">Volver a Servicios</a>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contáctanos</h2>
+            <div class="contact-icons">
+                <a href="https://wa.me/75092177" target="_blank" class="contact-icon bounce">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="mailto:eliasjoelferrierguthrie@gmail.com" class="contact-icon bounce">
+                    <i class="far fa-envelope"></i>
+                </a>
+                <a href="https://www.facebook.com/josemaria.peredobarba" target="_blank" class="contact-icon bounce">
+                    <i class="fab fa-facebook"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 FitLife. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
